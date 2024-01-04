@@ -15,7 +15,31 @@ app.use(cors({
 }))
 app.use(cookieParser())
 
-mongoose.connect("mongodb://127.0.0.1:27017/TaskZen", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://localhost:27017/Examp", { useNewUrlParser: true, useUnifiedTopology: true });
+
+const varifyUser = (req, res, next) => {
+    const token = req.cookies.token;
+    if(!token) {
+        return res.json("Token is missing")
+    } else {
+        jwt.verify(token, "jwt-secret-key", (err, decoded) => {
+            if(err) {
+                return res.json("Error with token")
+            }else {
+                if(decoded.role === "admin") {
+                    next()
+                } else {
+                    return res.json("not admin")
+                }
+            }
+        })
+    }
+}
+
+app.get("/dashboard", varifyUser , (req, res) => {
+    res.json("Success")
+    console.log(req)
+})
 
 app.post("/register", (req, res) => {
     const {name, email, password} = req.body;
