@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
+
 const Signup = () => {
     const [name, setName] = useState()
     const [email, setEmail] = useState()
@@ -23,7 +24,7 @@ const Signup = () => {
     };
 
     return(
-        <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
+        <div className="d-flex justify-content-center align-items-center bg-secondary vh-100" >
             <div className="bg-white p-3 rounded w-25">
                 <h2>Create Account</h2>
                 <form onSubmit={handleSubmit}>
