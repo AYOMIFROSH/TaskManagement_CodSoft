@@ -1,0 +1,77 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700|Work+Sans:300,400,500,600,700&display=swap);
+
+
+html {
+    font-family: sans-serif;
+}
+:root {
+    --accent-color: #FF0000;
+    --light-gray: rgba(0, 0, 0, 0.1);
+    --main-color: rgb(0, 128, 0);
+    --light-cyan: #E0FFFF;
+    --honey-dew: #F0FFF0;
+}
+
+body{
+    background-color: var(--light-gray);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#container{
+    background-image: url('./assets/back.png');
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+#containers{
+    background-image: url('./assets/home.png');
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.wrapper{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    gap: 5px;
+    background: var(--honey-dew);
+    flex-wrap: wrap;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+}
+.wrapper #input-style{
+    height: 10px;
+    width: 50%;
+    position: relative;
+}
+
+.wrapper #input-style{
+    height: 50%;
+    width: 100%;
+    font-size: 17px;
+    border: none;
+    border-bottom: 2px solid silver;
+}
+
+#Submit{
+    height: 100%;
+    width: 20%;
+    font-size: 17px;
+    border: none;
+    border-bottom: 2px solid silver;
+}
+

@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import {Link, useNavigate} from "react-router-dom"
 import axios from "axios"
 
+
 const Login = () => {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
@@ -30,25 +31,25 @@ const Login = () => {
     };
 
     return(
-        <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
-            <div className="bg-white p-3 rounded w-25">
-                <h2>Login</h2>
-                <form onSubmit={handleSubmit}>
+        <div className="d-flex justify-content-center align-items-center bg-secondary vh-100" id="containers">
+            <div className="bg-white p-3 rounded w-27">
+                <h3>Login</h3>
+                <form onSubmit={handleSubmit} className="wrapper">
                     <div className="mb-3">
                         <label htmlFor="email">
                             <strong>Email</strong>
                         </label>
-                        <input type="email" placeholder="Enter Email" autoComplete="off" name="email" className="form-control rounded-0" onChange={(event) => setEmail(event.target.value)}/>
+                        <input id="input-style" type="email" placeholder="Enter Email" autoComplete="off" name="email" className="form-control rounded-0" onChange={(event) => setEmail(event.target.value)}/>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="email">
                             <strong>Password</strong>
                         </label>
-                        <input type="password" placeholder="Enter Password" name="password" className="form-control rounded-0" onChange={(event) => setPassword(event.target.value)}/>
+                        <input id="input-style" type="password" placeholder="Enter Password" name="password" className="form-control rounded-0" onChange={(event) => setPassword(event.target.value)}/>
                     </div>
-                    <button type="submit" className="btn btn-success w-100 rounded-0">Login</button>
+                    <button id="Submit" type="submit" className="btn btn-success w-100 rounded-0">Login</button>
                 </form>
-                <p>Don't Have an Account?</p>
+                <strong><p>Don't Have an Account?</p></strong>
                 <Link to="/register" className="btn btn-default border w-100 bg-light rounded-0">SignUp</Link>
             </div>
         </div>
