@@ -27,7 +27,7 @@ const Login = () => {
                     navigate("/")
                 }
             } else if (res.data === "Wrong password") {
-                alert("Wrong Credentials!");
+                alert("Wrong Password");
             } else {
                 alert("User not found!");
             }
