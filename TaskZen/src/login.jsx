@@ -26,6 +26,10 @@ const Login = () => {
                 } else {
                     navigate("/")
                 }
+            } else if (res.data === "Wrong password") {
+                alert("Wrong Credentials!");
+            } else {
+                alert("User not found!");
             }
         }).catch(err => console.log(err));
     };
