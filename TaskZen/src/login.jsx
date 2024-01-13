@@ -43,13 +43,13 @@ const Login = () => {
                         <label htmlFor="email">
                             <strong>Email</strong>
                         </label>
-                        <input id="input-style" type="email" placeholder="Enter Email" autoComplete="off" name="email" className="form-control rounded-0" onChange={(event) => setEmail(event.target.value)}/>
+                        <input id="put-style-2" type="email" placeholder="Enter Email" autoComplete="off" name="email" className="form-control rounded-0" onChange={(event) => setEmail(event.target.value)}/>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="email">
                             <strong>Password</strong>
                         </label>
-                        <input id="input-style" type="password" placeholder="Enter Password" name="password" className="form-control rounded-0" onChange={(event) => setPassword(event.target.value)}/>
+                        <input id="put-style-2" type="password" placeholder="Enter Password" name="password" className="form-control rounded-0" onChange={(event) => setPassword(event.target.value)}/>
                     </div>
                     <button id="Submit" type="submit" className="btn btn-success w-100 rounded-0">Login</button>
                 </form>

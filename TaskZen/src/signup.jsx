@@ -18,7 +18,7 @@ const Signup = () => {
         }
         axios.post("http://localhost:3001/register", { name, email, password })
         .then(res => {
-            navigate("./login")
+            navigate("/login")
         }).catch(err => console.log(err));
     };
 
@@ -31,19 +31,19 @@ const Signup = () => {
                         <label htmlFor="Email">
                             <strong>Name</strong>
                         </label>
-                        <input id='input-style' type="text" placeholder="Enter Name" autoComplete="off" name="name" className="form-control rounded-0" onChange={(event) => setName(event.target.value)}/>
+                        <input id='put-style-2' type="text" placeholder="Enter Name" autoComplete="off" name="name" className="form-control rounded-0" onChange={(event) => setName(event.target.value)}/>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="email">
                             <strong>Email</strong>
                         </label>
-                        <input id='input-style' type="email" placeholder="Enter Email" autoComplete="off" name="email" className="form-control rounded-0" onChange={(event) => setEmail(event.target.value)}/>
+                        <input id='put-style-2' type="email" placeholder="Enter Email" autoComplete="off" name="email" className="form-control rounded-0" onChange={(event) => setEmail(event.target.value)}/>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="email">
                             <strong>Password</strong>
                         </label>
-                        <input id='input-style' type="password" placeholder="Enter Password" name="password" className="form-control rounded-0" onChange={(event) => setPassword(event.target.value)}/>
+                        <input id='put-style-2' type="password" placeholder="Enter Password" name="password" className="form-control rounded-0" onChange={(event) => setPassword(event.target.value)}/>
                     </div>
                     <button id='Submit' type="submit" className="btn btn-success w-100 rounded-0">Register</button>
                 </form>

@@ -72,6 +72,16 @@ app.post("/login", (req, res) => {
     })
 })
 
+app.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect('/login');
+    }
+  });
+});
+
 const port = 3001
 
 app.listen(port, () => {

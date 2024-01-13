@@ -53,19 +53,48 @@ body{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
 }
-.wrapper #input-style{
+.wrapper #put-style{
     height: 10px;
     width: 50%;
     position: relative;
 }
 
-.wrapper #input-style{
+.wrapper #put-style-2{
+    height: 10px;
+    width: 50%;
+    position: relative;
+}
+
+.wrapper #put-style-3{
+    height: 10px;
+    width: 50%;
+    position: relative;
+}
+
+.wrapper #put-style #put-style-2 #put-style-3{
     height: 50%;
     width: 100%;
     font-size: 17px;
     border: none;
     border-bottom: 2px solid silver;
 }
+
+.wrapper #put-style-2{
+    height: 50%;
+    width: 100%;
+    font-size: 17px;
+    border: none;
+    border-bottom: 2px solid silver;
+}
+
+.wrapper #put-style-3{
+    height: 50%;
+    width: 100%;
+    font-size: 17px;
+    border: none;
+    border-bottom: 2px solid silver;
+}
+
 
 #Submit{
     height: 100%;
