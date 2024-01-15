@@ -116,7 +116,7 @@ export const Todo = () => {
         {showNew ? (
             <div className='container'>
                 <div className='col-12 text-end'>
-                    <button className='btn btn-primary' onClick={handleAdd}> New </button>
+                    <button className='btn btn-primary' onClick={handleAdd}> Add Task </button>
                 </div>
             </div>
         ) : (
