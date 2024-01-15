@@ -29,7 +29,7 @@ const Login = () => {
             } else if (res.data === "Wrong password") {
                 alert("Wrong Password");
             } else {
-                alert("User not found!");
+                alert("username or password error!");
             }
         }).catch(err => console.log(err));
     };

@@ -1,10 +1,14 @@
 import React from "react";
 import SignOut from "./signOut";
+import Header from "./header";
+import Todo from "./todo";
+
 
 const Home = () => {
     return(
         <div>
-            <h3 style={{display: "flex", justifyContent: "center"}}>Home Page</h3>
+            <Header/>
+            <Todo />
             <SignOut/>
         </div>
     )

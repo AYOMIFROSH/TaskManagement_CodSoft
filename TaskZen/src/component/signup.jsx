@@ -23,7 +23,7 @@ const Signup = () => {
     };
 
     return(
-        <div className="d-flex justify-content-center align-items-center bg-secondary vh-100" id="container" >
+        <div className="d-flex justify-content-center align-items-center bg-secondary vh-100" id="conntainer" >
             <div className="bg-white p-3 rounded w-27">
                 <h3>Create Account</h3>
                 <form onSubmit={handleSubmit} className="wrapper">
