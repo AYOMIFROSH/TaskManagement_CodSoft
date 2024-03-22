@@ -1,0 +1,19 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-picture-background {
+    height: 24vh;
+    width: 100%;
+    background-image: url('../../assets/profileshit.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 5vh;
+    background-color: grey;
+}
+
+/* .profile-picture-background:hover{
+    transition: 1s ease-out;
+} */

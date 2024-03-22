@@ -6,13 +6,18 @@ import axios from "axios"
 
 
 const Login = () => {
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
-    const navigate = useNavigate()
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const navigate = useNavigate();
+    const [name, setName] = useState();
 
     axios.defaults.withCredentials = true;
     const handleSubmit = (event) => {
         event.preventDefault();
+        if (!email || !password) {
+            alert('Fill Data');
+            return;
+        }
         if (password.length < 8) {
             alert("Password must be at least 8 characters long");
             return;
@@ -21,17 +26,28 @@ const Login = () => {
         .then(res => {
             console.log("login: " + res.data);
             if(res.data.Status === "success") {
+                setName(res.data.name)
                 if(res.data.role === "admin"){
-                    navigate("/dashboard")
+                    navigate("/dashboard", {state: {name: res.data.name}})
                 } else {
-                    navigate("/")
+                    navigate("/home", {state: {name: res.data.name}})
                 }
-            } else if (res.data === "Wrong password") {
+            
+            } else if (res === "Wrong password") {
                 alert("Wrong Password");
             } else {
-                alert("username or password error!");
+                alert("password Incorrect! please check password and try again");
             }
-        }).catch(err => console.log(err));
+        }).catch(err => {
+            if (err.response && err.response.status === 400) {
+                alert("Email does not exist please check the mail or proceed to create account");
+            } else {
+                console.log(err);
+            }
+        }).catch(err => {
+            console.log(err);
+            alert("An error occurred while trying to log in. Please try again.");
+        })
     };
 
     return(
@@ -54,7 +70,10 @@ const Login = () => {
                     <button id="Submit" type="submit" className="btn btn-success w-100 rounded-0">Login</button>
                 </form>
                 <strong><p>Don't Have an Account?</p></strong>
-                <Link to="/register" className="btn btn-default border w-100 bg-light rounded-0">SignUp</Link>
+                <Link to="/register" className="btn btn-default border w-100 bg-light rounded-0"><b>SignUp For Free</b></Link>
+                <p>
+                    <Link to="/forgot-password">Forgot password?</Link>
+                </p>
             </div>
         </div>
     )

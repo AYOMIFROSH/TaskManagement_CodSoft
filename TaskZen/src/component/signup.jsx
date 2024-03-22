@@ -8,10 +8,15 @@ const Signup = () => {
     const [name, setName] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
+    
     const navigate = useNavigate()
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        if (!name || !email || !password) {
+            alert("Fill Data");
+            return;
+        }
         if (password.length < 8) {
             alert("Password must be at least 8 characters long");
             return;
@@ -19,8 +24,17 @@ const Signup = () => {
         axios.post("http://localhost:3001/register", { name, email, password })
         .then(res => {
             navigate("/login")
-        }).catch(err => console.log(err));
+        }).catch(err => {
+            if (err.response && err.response.status === 400) {
+                alert('Email already exists please proceed Login to account');
+            } else {
+                console.log(err);
+            }
+        });
     };
+    
+    
+    
 
     return(
         <div className="d-flex justify-content-center align-items-center bg-secondary vh-100" id="conntainer" >
@@ -47,8 +61,8 @@ const Signup = () => {
                     </div>
                     <button id='Submit' type="submit" className="btn btn-success w-100 rounded-0">Register</button>
                 </form>
-                <strong><p>Already Have an Account</p></strong>
-                <Link to="/login" className="btn btn-default border w-100 bg-light rounded-0">Login</Link>
+                <strong><p>Already Have an Account?</p></strong>
+                <Link to="/login" className="btn btn-default border w-100 bg-light rounded-0" id="nav"><b>Login To account</b></Link>
             </div>
         </div>
     )

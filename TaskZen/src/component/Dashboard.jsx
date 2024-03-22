@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import SignOut from "./signOut";
+import { Link } from "react-router-dom";
+import Header from "./header";
 
 const Dashboard = () => {
     const [suc, setSuc] = useState()
@@ -12,7 +13,7 @@ const Dashboard = () => {
         .then(res => {
             console.log(res.data);
             if(res.data === "Success"){
-                setSuc("Successded ok")
+                setSuc('success')
             } else {
                 navigate("/")
             }
@@ -20,9 +21,9 @@ const Dashboard = () => {
     }, [])
     return(
         <div>
-            <h3>dashboard</h3>
+            <Header />
             <p>{suc}</p>
-            <SignOut/>
+            <Link to='/login'><main>logOut</main></Link>
         </div>
     )
 }; 

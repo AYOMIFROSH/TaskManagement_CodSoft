@@ -1,9 +1,15 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom';
 
 export const Header = () => {
+
+    const location = useLocation();
+
+    const name = location.state.name;
+
   return (
     <div>
-        <nav className='nav'>
+        <nav className='nav' style={{backgroundColor: 'grey'}}>
             <div className='nav-left'>
                 <strong><a className='brand' href='#'>
                     TaskZen
@@ -15,6 +21,9 @@ export const Header = () => {
                 </div>
             </div>
         </nav>
+        <div style={{margin: '20px'}}>
+            <h4 style={{color: 'red', cursor: 'pointer', fontSize: '1.3rem'}}><cite style={{color: 'blue'}}>Welcome,</cite> <b>{name}!</b></h4>
+        </div>
     </div>
   );
 };

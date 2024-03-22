@@ -1,7 +1,10 @@
-import React from 'react'
+import React, {useEffect}from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
 import { useState } from 'react';
-
+import Filter from './Filtering/Filter';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 export const Todo = () => {
     const [showForm, setshowform] = useState(true);
     const [showNew, setshowNew] = useState(true);
@@ -15,14 +18,36 @@ export const Todo = () => {
     const [inputTitle, setinputTitle] = useState("");
     const [inputDesc, setinputDesc] = useState("");
     const [items, setitems] = useState([
-        {
-            id: '001',
-            name: 'Default Task',
-            desc: 'Default Description',
-            status: false,
+        // {
+        //     id: '001',
+        //     name: 'Default Task',
+        //     desc: 'Default Description',
+        //     status: false,
 
-        }
+        // }
     ]);
+
+    const [filteredItems, setFilteredItems] = useState(items);
+
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
+
+    useEffect(() => {
+        setStartDate(new Date());
+    }, []);
+
+    const [selectedTask, setSelectedTask] = useState(null);
+    
+
+// Add a new function to handle task selection
+    const handleSelectTask = (id) => {
+        if (selectedTask === id) {
+            setSelectedTask(null);  // If the task is already selected, deselect it
+        } else {
+            setSelectedTask(id);  // Otherwise, select the task
+        }
+    };
+    
 
     //Handling input fields
     const handleInput = (event) => {
@@ -61,11 +86,14 @@ export const Todo = () => {
                 id: new Date().getTime().toString(),
                 name: inputTitle,
                 desc: inputDesc,
+                startDate,
+                endDate,
             };
             setitems([allInputTitle, ...items]);
             setinputTitle('');
             setinputDesc('');
             setshowform(false);
+            
         }
     };
 
@@ -110,13 +138,22 @@ export const Todo = () => {
         setshowList(true);
         setshowNew(false);
     };
+    
+    //close add task
+    const handleClose = () => {
+        // Hide the form for adding a new task
+        setshowform(false);
+        setshowList(false);
+        setshowNew(true);
+    };
 
   return (
-    <React.Fragment>
+    <div >
+        <Filter items={items} setFilteredItemsInParent={setFilteredItems}/>
         {showNew ? (
             <div className='container'>
                 <div className='col-12 text-end'>
-                    <button className='btn btn-primary' onClick={handleAdd}> Add Task </button>
+                    <button className='btn btn-primary' onClick={handleAdd}><FontAwesomeIcon icon={faPlus} /> </button>
                 </div>
             </div>
         ) : (
@@ -125,16 +162,20 @@ export const Todo = () => {
 
         {showForm ? (
             <>
-            <div className='container border rounded d-flex justify-content-center shadow p-3 mb-5 bg-white rounded'>
+            <div className='container border rounded d-flex justify-content-center shadow p-3 mb-5 bg-white rounded' style={{width: '100%', margin: '45px', height: '100%'}}>
                 <div className='row'>
                     <div className='text-center'>
                         <h3>{toggleSubmit ? 'Create Task' : 'Edit Task'}</h3>
                     </div>
-                    <form className="col-12 p-2" onSubmit={handleSubmit} id='wrapper'>
+                    <form className="col-12 p-2" onSubmit={handleSubmit} style={{}}>
                         <strong><label htmlFor="title" className='my-2'> Enter Title</label></strong>
                         <input type="text" name='title' id='put-style-2' placeholder='title' className='w-100 my-1 p-2' onChange={handleInput} value={inputTitle}/>
                         <strong><label htmlFor="description" className='my-2'> Enter </label></strong>
-                        <input type="text" name='description' id='put-style-2' placeholder='description' className='w-100 my-1 p-2' onChange={handleInputdesc} value={inputDesc} />
+                        <textarea type='text'  name="description" id="put-style-2" placeholder="description" className="w-100 my-1 p-2" onChange={handleInputdesc} value={inputDesc} rows={5}  cols={30} />
+                        <strong><label htmlFor="end-date" className='my-2'> End Date</label></strong>
+                        <input type="date" name='end-date' className='w-100 my-1 p-2' onChange={(e) => setEndDate(new Date(e.target.value))} style={{border: 'none', borderBottom: '2px solid silver'}}/>
+
+ 
                         {/* <div className='text-center'> */}
                         {toggleSubmit ? (
                             <button className='btn btn-primary my-2' id='check'> Save </button>
@@ -157,17 +198,21 @@ export const Todo = () => {
                 ) : (
                     ""
                 )}
-                {items.map ((elem, index) => {
+                {filteredItems.map ((elem, index) => {
                     return(
                         <div className='row border rounded shadow p-3 mb-3 bg-white rounded p-2' key={elem.id}>
                             <div className='col-12 d-flex justify-content-between align-items-center'>
-                                <div>
+                                <div onClick={() => handleSelectTask(elem.id)}>
                                     <h4>{elem.name}</h4>
+                                    {selectedTask !== elem.id && <p><b>Time remaining:</b> {Math.ceil((new Date(elem.endDate) - new Date(new Date().setHours(0,0,0,0))) / (1000 * 60 * 60 *24))} days</p>}
+                                    {selectedTask === elem.id && <>
+                                    <p><b style={{fontFamily: 'cursive'}}>Created on:</b> {elem.startDate.toLocaleDateString()}</p>
                                     <p>{elem.desc}</p>
+                                            </>}
                                 </div>
-                                <button className='btn btn-primary mx-2' onClick={() => handleEdit(elem.id)}> Edit </button>
+                                <button className='btn btn-primary mx-2' onClick={() => handleEdit(elem.id)}  > <FontAwesomeIcon icon={faEdit} /> </button>
                                 {showDelete ? (
-                                    <button className='btn btn-danger mx-2' onClick={() => handleDelete(elem.id)}> Delete </button>
+                                    <button className='btn btn-danger mx-2' onClick={() => handleDelete(elem.id)}> <FontAwesomeIcon icon={faTrash} /> </button>
                                 ) : (
                                     ""
                                 )}
@@ -179,7 +224,7 @@ export const Todo = () => {
         ) : (
             ""
         )}
-    </React.Fragment>
+    </div>
   );
 };
 

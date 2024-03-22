@@ -41,6 +41,26 @@ body{
     position: relative;
 }
 
+.wrapperr{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.wrapperr #put-style-{
+    height: 30px;
+    width: 30px;
+}
+
+.wrapperr #put-style-{
+    height: 50%;
+    width: 30%;
+    font-size: 17px;
+    border: none;
+    text-shadow: none;
+    border-bottom: 2px solid silver;
+}
+
+
 .wrapper{
     margin-top: 10px;
     margin-bottom: 20px;
@@ -53,6 +73,21 @@ body{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
 }
+
+    button:hover{
+        background-color: rgba(0, 136, 169, 0.8);
+    }
+    
+    
+.Edit{
+    box-shadow: 3px 3px 5px var(--light-gray), -1px -1px 2px var(--light-gray);
+    border: none;
+    transition: scale .2s ease;
+    user-select: none;
+    line-height: 1;
+    cursor: pointer;
+}
+
 .wrapper #put-style{
     height: 10px;
     width: 50%;
@@ -65,20 +100,6 @@ body{
     position: relative;
 }
 
-.wrapper #put-style-3{
-    height: 10px;
-    width: 50%;
-    position: relative;
-}
-
-.wrapper #put-style #put-style-2 #put-style-3{
-    height: 50%;
-    width: 100%;
-    font-size: 17px;
-    border: none;
-    border-bottom: 2px solid silver;
-}
-
 .wrapper #put-style-2{
     height: 50%;
     width: 100%;
@@ -87,6 +108,12 @@ body{
     border-bottom: 2px solid silver;
 }
 
+#addMe, #adding{
+    bottom: 10px;
+    /* width: 90px;
+    margin-top: 30px;
+    text-align: center; */
+}
 
 #Submit{
     height: 100%;
@@ -106,6 +133,8 @@ body{
     width: 100%;
     height: 100%;
     padding: 20px;
+    position: sticky;
+    top: 0;
 }
 
 nav .nav-left, .nav-right{
@@ -135,10 +164,14 @@ nav a{
 .task_edit form{
     display: flex;
     flex-direction: column;
+    padding: 50px;
 }
 .task_edit form input, label, button{
     margin:2px 2px !important;
     position: relative;
+}
+form{
+    max-width: 200%;
 }
 
 #wrapper, #put-style-2{
@@ -148,6 +181,60 @@ nav a{
     padding: 2px;
 }
 
-#check{
-    border-bottom: 0 solid solid;
-}
+.react-datetime-picker {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .react-datetime-picker__wrapper {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .react-datetime-picker__inputGroup {
+    display: flex;
+    align-items: center;
+  }
+  
+  .react-datetime-picker__inputGroup__input {
+    flex: 1;
+    margin-right: 8px;
+  }
+  
+  .react-datetime-picker__calendar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 8px;
+  }
+  
+  .react-datetime-picker__clock {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 8px;
+  }
+
+  @media(max-width: 992px) {
+    .sidebar{
+        display: none;
+    }
+  }
+
+  @media(max-width: 892px) {
+    .sidebar{
+        display: none;
+    }
+  }
